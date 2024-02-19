@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+      {
+        "name": "Dart Web",
+        "request": "launch",
+        "type": "dart",
+        "args": [
+          "--web-hostname",
+          "localhost",
+          "--web-port",
+          "8080"
+        ],
+        "cwd": "${workspaceFolder}",
+        "program": "${workspaceFolder}/web/main.dart"
+      }
+    ]
+  }
+  

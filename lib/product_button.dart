@@ -52,7 +52,7 @@ class ProductButton extends StatelessWidget {
         children: [
           Image.network(
             imageUrl,
-            width: double.infinity,
+            width: 100,
             height: 100,
             fit: BoxFit.cover,
           ),

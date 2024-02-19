@@ -32,7 +32,7 @@ class MilkVanille extends StatelessWidget {
                 ),
               ),
               CircleAvatar(
-                radius: 50,
+                radius: 80,
                 backgroundImage: AssetImage('images/MILKSHAKE VANILLE.jpg'),
               ),
               SizedBox(height: 20),

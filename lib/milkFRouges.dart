@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 
-class MilkFRouge extends StatelessWidget {
+class MilkFRouge extends StatefulWidget {
   const MilkFRouge({Key? key}) : super(key: key);
+
+  @override
+  _MilkFRougeState createState() => _MilkFRougeState();
+}
+
+class _MilkFRougeState extends State<MilkFRouge> {
   static const IconData add_circle_outline =
       IconData(0xe050, fontFamily: 'MaterialIcons');
+  static const IconData do_disturb_on_outlined =
+      IconData(0xefd7, fontFamily: 'MaterialIcons');
+  int _variableModifiable = 1;
+  String footerMessage = 'Ajouter 1 article au panier';
+  String priceMessage = '6.00 € ';
+  int _footerPrice = 6;
 
   @override
   Widget build(BuildContext context) {
@@ -20,51 +32,121 @@ class MilkFRouge extends StatelessWidget {
             },
           ),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 80,
+                  backgroundImage:
+                      AssetImage('images/MILKSHAKE FRUITS ROUGES.jpg'),
+                ),
+                Text(
+                  'MILKSHAKE FRUITS ROUGES',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 20),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CheckBoxButton(title: 'COULIS'),
+                    SizedBox(height: 20),
+                    CheckBoxButton(title: 'TOPPING'),
+                    SizedBox(height: 20),
+                    Text(
+                      'Remarque :',
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 20),
+                    // Ajoutez le TextField ici
+                    TextField(
+                      minLines: 1,
+                      maxLines: 5,
+                      style: TextStyle(fontSize: 20),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.add_circle_outline),
+                          onPressed: () {
+                            setState(() {
+                              // Action à effectuer lors du clic sur l'icône d'ajout
+                              _variableModifiable++;
+                              footerMessage =
+                                  'Ajouter $_variableModifiable article au panier';
+                              _footerPrice = _variableModifiable * 6;
+                              priceMessage = '$_footerPrice.00 €';
+                            });
+                          },
+                        ),
+                        SizedBox(width: 20),
+                        Text(
+                          ' $_variableModifiable',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        SizedBox(width: 20),
+                        IconButton(
+                          icon: Icon(Icons.remove_circle_outline),
+                          onPressed: () {
+                            setState(() {
+                              // Action à effectuer lors du clic sur l'icône de suppression
+                              if (_variableModifiable > 1) {
+                                _variableModifiable--;
+                                footerMessage =
+                                    'Ajouter $_variableModifiable article au panier';
+                                _footerPrice = _footerPrice - 6;
+                                priceMessage = '$_footerPrice.00 €';
+                              }
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+
+        // Footer de couleur gris
+        bottomNavigationBar: Container(
+          color: Colors.blue,
+          height: 50, // Hauteur du footer
+          child: Row(
+            mainAxisAlignment:
+                MainAxisAlignment.spaceBetween, // Espace entre les éléments
             children: [
-              Text(
-                'MILKSHAKE FRUITS ROUGES',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+              Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Text(
+                  footerMessage,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ),
-              CircleAvatar(
-                radius: 50,
-                backgroundImage:
-                    AssetImage('images/MILKSHAKE FRUITS ROUGES.jpg'),
-              ),
-              SizedBox(height: 20),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CheckBoxButton(title: 'COULIS'),
-                  SizedBox(height: 20),
-                  CheckBoxButton(title: 'TOPPING'),
-                  Text(
-                    'Remarque :',
-                    textAlign: TextAlign.center,
+              Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: Text(
+                  priceMessage,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
                   ),
-                  // Ajoutez le TextField ici
-                  TextField(
-                    minLines: 1,
-                    maxLines: 5,
-                    style: TextStyle(fontSize: 20),
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  // actions: [
-                  IconButton(
-                    icon: Icon(Icons.add_circle_outline),
-                    onPressed: () {
-                      // Action à effectuer lors du clic sur l'icône
-                    },
-                  ),
-                  //],
-                ],
+                ),
               ),
             ],
           ),

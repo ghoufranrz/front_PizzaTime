@@ -29,15 +29,55 @@ class Milkshake extends StatelessWidget {
                 imageUrl:
                     "images/MILKSHAKE CHOCOLAT.jpg", // Assurez-vous que cette image est dans le dossier assets
               ),
-              SizedBox(
-                height: 20,
-              ), // Espacement entre les boutons
+              SizedBox(height: 20), // Espacement entre les boutons
               ProductButton(
                 id: 3,
                 name: "MILKSHAKE FRUITS ROUGES",
                 price: "prix 6.00€",
                 imageUrl:
                     "images/MILKSHAKE FRUITS ROUGES.jpg", // Assurez-vous que cette image est dans le dossier assets
+              ),
+            ],
+          ),
+        ),
+        // Footer de couleur bleu
+        bottomNavigationBar: Container(
+          color: Colors.blue,
+          height: 50, // Hauteur du footer
+          child: Row(
+            mainAxisAlignment:
+                MainAxisAlignment.spaceBetween, // Espace entre les éléments
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Text(
+                  '0 article',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(),
+                child: Text(
+                  'Paiement',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 10),
+                child: Text(
+                  '0.00 €',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
               ),
             ],
           ),
